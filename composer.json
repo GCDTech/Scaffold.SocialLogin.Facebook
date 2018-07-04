@@ -1,0 +1,41 @@
+{
+  "name": "rhubarbphp/scaffold-social-login-facebook",
+  "description": "Social Login button for Facebook",
+  "minimum-stability": "dev",
+  "keywords": [
+    "rhubarb",
+    "php",
+    "framework",
+    "social",
+    "social network",
+    "facebook"
+  ],
+  "license": "Apache-2.0",
+  "autoload": {
+    "psr-4": {
+      "Rhubarb\\Scaffolds\\SocialLogin\\Facebook\\": "src/",
+      "Rhubarb\\Scaffolds\\SocialLogin\\Facebook\\Tests\\": "tests/unit"
+    }
+  },
+  "repositories": [
+    {
+      "type":"path",
+      "url": "../Scaffold.SocialLogin"
+    }
+  ],
+  "require": {
+    "rhubarbphp/rhubarb": "^1.5.9",
+    "rhubarbphp/module-leaf": "^1.0.0",
+    "rhubarbphp/scaffold-social-login": "*",
+    "rhubarbphp/module-leaf-common-controls": "*",
+    "facebook/graph-sdk": "~5.0"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "require-dev": {
+    "rhubarbphp/custard": "^1.0.8",
+    "codeception/codeception": "^2.3.0",
+    "codeception/verify": "^1.0"
+  }
+}
