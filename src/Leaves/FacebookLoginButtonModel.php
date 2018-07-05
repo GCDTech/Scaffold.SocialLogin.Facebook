@@ -13,8 +13,6 @@ class FacebookLoginButtonModel extends SocialLoginButtonModel
     public function __constructor()
     {
         parent::__construct();
-        $this->addCssClassNames(['c-button', 'c-button--large', 'c-button--long', 'c-button--secondary']);
-        $this->addCssClassNames('facebook-login-button');
         $this->facebookSdkScript = $this->SetUpFacebookApi();
     }
 
