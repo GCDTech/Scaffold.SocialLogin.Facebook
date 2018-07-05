@@ -1,7 +1,7 @@
 {
   "name": "gcdtech/scaffold-social-login-facebook",
   "description": "Social Login button for Facebook",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "keywords": [
     "rhubarb",
     "php",
@@ -23,15 +23,15 @@
     "rhubarbphp/module-leaf": "^1.0.0",
     "rhubarbphp/scaffold-social-login": "*",
     "rhubarbphp/module-leaf-common-controls": "*",
-    "rhubarbphp/scaffold-social-login": "^1.*",
-    "facebook/graph-sdk": "~5.0"
+    "facebook/graph-sdk": "~5.0",
+    "rhubarbphp/custard": "^1.0.8",
+    "codeception/codeception": "^2.3.0",
+    "codeception/verify": "^1.0"
   },
   "config": {
     "bin-dir": "bin/"
   },
   "require-dev": {
-    "rhubarbphp/custard": "^1.0.8",
-    "codeception/codeception": "^2.3.0",
-    "codeception/verify": "^1.0"
+    "rhubarbphp/scaffold-social-login": "dev-master"
   }
 }
