@@ -1,5 +1,5 @@
 {
-  "name": "rhubarbphp/scaffold-social-login-facebook",
+  "name": "gcdtech/scaffold-social-login-facebook",
   "description": "Social Login button for Facebook",
   "minimum-stability": "dev",
   "keywords": [
@@ -10,6 +10,7 @@
     "social network",
     "facebook"
   ],
+  "homepage": "https://github.com/GCDTech/Scaffold.SocialLogin.Facebook",
   "license": "Apache-2.0",
   "autoload": {
     "psr-4": {
@@ -17,17 +18,12 @@
       "Rhubarb\\Scaffolds\\SocialLogin\\Facebook\\Tests\\": "tests/unit"
     }
   },
-  "repositories": [
-    {
-      "type":"vcs",
-      "url": "https://github.com/GCDTech/scaffold-social-login.git"
-    }
-  ],
   "require": {
     "rhubarbphp/rhubarb": "^1.5.9",
     "rhubarbphp/module-leaf": "^1.0.0",
     "rhubarbphp/scaffold-social-login": "*",
     "rhubarbphp/module-leaf-common-controls": "*",
+    "rhubarbphp/scaffold-social-login": "^1.*",
     "facebook/graph-sdk": "~5.0"
   },
   "config": {
