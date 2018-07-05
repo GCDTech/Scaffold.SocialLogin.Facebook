@@ -19,8 +19,8 @@
   },
   "repositories": [
     {
-      "type":"path",
-      "url": "../Scaffold.SocialLogin"
+      "type":"vcs",
+      "url": "https://github.com/GCDTech/scaffold-social-login.git"
     }
   ],
   "require": {

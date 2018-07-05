@@ -53,9 +53,9 @@ class FacebookLoginButton extends SocialLoginButton
         }
 
         // Get additional data
-        $authEntity->email = $loginInfo->email;
-        $authEntity->forename = $loginInfo->first_name;
-        $authEntity->surname = $loginInfo->last_name;
+        $authEntity->responsePayload[self::FACEBOOK_EMAIL] = $loginInfo->email;
+        $authEntity->responsePayload[self::FACBEOOK_FIRSTNAME] = $loginInfo->first_name;
+        $authEntity->responsePayload[self::FACBEOOK_LASTNAME] = $loginInfo->last_name;
 
         return $authEntity;
     }
