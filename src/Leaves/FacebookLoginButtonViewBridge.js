@@ -8,10 +8,12 @@ rhubarb.vb.create('FacebookLoginButtonViewBridge', function () {
       facebookLoginBtn.addEventListener('click', self.updateLoginStatus)
     },
     updateLoginStatus: function () {
+      debugger;
+      let self = this;
       FB.login(function (response) {
         if (response.status === 'connected') {
           FB.api('/me', {locale: 'en_US', fields: 'first_name, last_name, email'}, function (userInfo) {
-            self.raiseServerEvent('attemptSocialLogin', userInfo)
+            self.viewBridge.raiseServerEvent('attemptSocialLogin', userInfo)
           })
         }
       }, {scope: 'public_profile,email', return_scopes: true})

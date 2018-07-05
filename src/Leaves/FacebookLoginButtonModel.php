@@ -13,7 +13,7 @@ class FacebookLoginButtonModel extends SocialLoginButtonModel
     public function __constructor()
     {
         parent::__construct();
-        $this->facebookSdkScript = $this->SetUpFacebookApi();
+        //$this->facebookSdkScript = $this->SetUpFacebookApi();
     }
 
     protected function SetUpFacebookApi()
