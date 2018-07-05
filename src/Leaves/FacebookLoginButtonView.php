@@ -2,6 +2,8 @@
 
 namespace Rhubarb\Scaffolds\SocialLogin\Facebook\Leaves;
 
+
+use Rhubarb\Leaf\Leaves\LeafDeploymentPackage;
 use Rhubarb\Scaffolds\SocialLogin\Leaves\Controls\SocialLoginButtonView;
 
 class FacebookLoginButtonView extends SocialLoginButtonView
