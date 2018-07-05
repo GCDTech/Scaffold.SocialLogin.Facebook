@@ -7,7 +7,7 @@ use Rhubarb\Scaffolds\SocialLogin\Leaves\Controls\SocialLoginButtonModel;
 
 class FacebookLoginButtonModel extends SocialLoginButtonModel
 {
-    public $summonFbsdkScript;
+    public $facebookSdkScript;
     public $text = 'Continue with Facebook';
 
     public function __constructor()
@@ -15,7 +15,7 @@ class FacebookLoginButtonModel extends SocialLoginButtonModel
         parent::__construct();
         $this->addCssClassNames(['c-button', 'c-button--large', 'c-button--long', 'c-button--secondary']);
         $this->addCssClassNames('facebook-login-button');
-        $this->summonFbsdkScript = $this->SetUpFacebookApi();
+        $this->facebookSdkScript = $this->SetUpFacebookApi();
     }
 
     protected function SetUpFacebookApi()
@@ -23,7 +23,8 @@ class FacebookLoginButtonModel extends SocialLoginButtonModel
         $settings = FacebookDeveloperSettings::singleton();
         $appId = $settings->facebookAppId;
         $apiVersion = $settings->facebookApiVersion;
-        return <<<JS
+        return <<<HTML
+    <script>
       window.fbAsyncInit = function() {
         FB.init({
           appId            : {$appId},
@@ -40,6 +41,7 @@ class FacebookLoginButtonModel extends SocialLoginButtonModel
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-JS;
+    </script>
+HTML;
     }
 }
