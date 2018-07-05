@@ -25,8 +25,9 @@
     "rhubarbphp/module-leaf-common-controls": "*",
     "facebook/graph-sdk": "~5.0",
     "rhubarbphp/custard": "^1.0.8",
-    "codeception/codeception": "^2.3.0",
-    "codeception/verify": "^1.0"
+    "codeception/codeception": "^2.2",
+    "codeception/specify": "^0.4.5",
+    "codeception/verify": "^0.3.2"
   },
   "config": {
     "bin-dir": "bin/"
