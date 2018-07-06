@@ -21,7 +21,7 @@ class FacebookLoginButton extends SocialLoginButton
 
     /** @var Facebook $facebookApi */
     protected $facebookApi;
-
+    
     protected function createModel()
     {
         $model =  new FacebookLoginButtonModel();

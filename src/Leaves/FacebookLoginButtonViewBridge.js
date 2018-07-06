@@ -13,7 +13,8 @@ rhubarb.vb.create('FacebookLoginButtonViewBridge', function () {
       FB.login(function (response) {
         if (response.status === 'connected') {
           FB.api('/me', {locale: 'en_US', fields: 'first_name, last_name, email'}, function (userInfo) {
-            self.viewBridge.raiseServerEvent('attemptSocialLogin', userInfo)
+            self.viewBridge.raiseServerEvent('attemptSocialLogin', userInfo,function(){console.log("pass")},function(){console.log("fail")})
+              
           })
         }
       }, {scope: 'public_profile,email', return_scopes: true})
