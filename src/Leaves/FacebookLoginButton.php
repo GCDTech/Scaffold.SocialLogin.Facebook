@@ -17,7 +17,8 @@ class FacebookLoginButton extends SocialLoginButton
         FACEBOOK_IDENTITY_STRING = 'id',
         FACEBOOK_EMAIL = 'email',
         FACBEOOK_FIRSTNAME = 'first_name',
-        FACBEOOK_LASTNAME = 'last_name';
+        FACBEOOK_LASTNAME = 'last_name',
+        FACEBOOK_ACCESS_TOKEN = 'access_token';
 
     /** @var Facebook $facebookApi */
     protected $facebookApi;
@@ -58,6 +59,7 @@ class FacebookLoginButton extends SocialLoginButton
         $authEntity->responsePayload[self::FACEBOOK_EMAIL] = $loginInfo->email;
         $authEntity->responsePayload[self::FACBEOOK_FIRSTNAME] = $loginInfo->first_name;
         $authEntity->responsePayload[self::FACBEOOK_LASTNAME] = $loginInfo->last_name;
+        $authEntity->responsePayload[self::FACEBOOK_ACCESS_TOKEN] = $loginInfo->access_token;
 
         return $authEntity;
     }
@@ -80,7 +82,7 @@ class FacebookLoginButton extends SocialLoginButton
             return $this->handleFacebookException($exception);
         }
         $user = $response->getGraphUser();
-        return $user->getId() == $token;
+        return $user->getId() == $this->getFieldIfExists(self::FACEBOOK_IDENTITY_STRING);
     }
 
     /**
@@ -103,7 +105,7 @@ class FacebookLoginButton extends SocialLoginButton
      */
     protected function getSocialMediaLoginToken(): string
     {
-        return $this->getFieldIfExists(self::FACEBOOK_IDENTITY_STRING);
+        return $this->getFieldIfExists(self::FACEBOOK_ACCESS_TOKEN);
     }
 
     /**
@@ -151,10 +153,10 @@ class FacebookLoginButton extends SocialLoginButton
     <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId            : {$appId},
+          appId            : "{$appId}",
           autoLogAppEvents : true,
           xfbml            : true,
-          version          : {$apiVersion}
+          version          : "{$apiVersion}"
         });
       };
 
