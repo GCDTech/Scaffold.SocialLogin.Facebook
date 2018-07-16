@@ -20,7 +20,9 @@ class FacebookLoginButtonView extends SocialLoginButtonView
 
     public function getDeploymentPackage()
     {
-        return new LeafDeploymentPackage(__DIR__ . '/FacebookLoginButtonViewBridge.js');
+        $package = parent::getDeploymentPackage();
+        $package->resourcesToDeploy[] = __DIR__ . '/FacebookLoginButtonViewBridge.js';
+        return $package;
     }
 
     protected function getViewBridgeName()
