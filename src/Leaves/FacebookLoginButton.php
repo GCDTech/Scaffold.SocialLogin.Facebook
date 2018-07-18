@@ -25,8 +25,14 @@ class FacebookLoginButton extends SocialLoginButton
     
     protected function createModel()
     {
+        $settings = FacebookDeveloperSettings::singleton();
+        $appId = $settings->facebookAppId;
+        $apiVersion = $settings->facebookApiVersion;
+
         $model =  new FacebookLoginButtonModel();
-        $model->facebookSdkScript = $this->SetUpFacebookJSApi();
+        $model->facebookApiVersion = $apiVersion;
+        $model->facebookAppId = $appId;
+
         return $model;
     }
 
@@ -142,32 +148,5 @@ class FacebookLoginButton extends SocialLoginButton
             return $this->model->clientSideLoginInfo->$field;
         }
         throw new ImplementationException('Field not found in login info');
-    }
-
-    protected function SetUpFacebookJSApi()
-    {
-        $settings = FacebookDeveloperSettings::singleton();
-        $appId = $settings->facebookAppId;
-        $apiVersion = $settings->facebookApiVersion;
-        return <<<HTML
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId            : "{$appId}",
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : "{$apiVersion}"
-        });
-      };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
-HTML;
     }
 }

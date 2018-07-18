@@ -1,12 +1,28 @@
 rhubarb.vb.create('FacebookLoginButtonViewBridge', function (parent) {
   return {
     attachEvents: function () {
-      let
-        self = this,
-        facebookLoginBtn = document.querySelector('.facebook-login-button')
+      let facebookLoginBtn = document.querySelector('.facebook-login-button');
+      var self = this;
+
+      window.fbAsyncInit = function() {
+          FB.init({
+              appId            : self.model.facebookAppId,
+              autoLogAppEvents : true,
+              xfbml            : true,
+              version          : self.model.facebookApiVersion
+          });
+      };
+
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
 
 
-      facebookLoginBtn.addEventListener('click', self.updateLoginStatus.bind(this))
+      facebookLoginBtn.addEventListener('click', this.updateLoginStatus.bind(this))
     },
     updateLoginStatus: function () {
       let self = this;
@@ -22,4 +38,4 @@ rhubarb.vb.create('FacebookLoginButtonViewBridge', function (parent) {
       }, {scope: 'public_profile,email', return_scopes: true})
     }
   }
-}, rhubarb.viewBridgeClasses.SocialLoginButtonViewBridge)
+}, rhubarb.viewBridgeClasses.SocialLoginButtonViewBridge);
